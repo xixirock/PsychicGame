@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Psychic game</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+
+</head>
+<body>
+
+  <header>Psychic Game</header>
+  
+
+  <div id="game">
+    <p>Guess what letter I'm thinking of?</p>
+    
+    <p>Win: 0</p>
+    <p>Losses: 0</p>
+    <p>Guess: 10</p>
+    <p>Your Guesses so far: </p>
+  </div>
+
+
+
+  <script type="text/javascript">
+    // make array of letters
+    var letters = ['a','b','c','d','e','f','g','h','i','j','k','l',
+    'm','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+    //make variable tracking wins and losses
+
+    var win = 0;
+    var losses = 0;
+    var guess = 10;
+    var guessSoFar = [];
+
+    //randomly generate computer choice on array of letters
+
+    var computerChoice = letters[Math.floor(Math.random()*letters.length)];
+
+    console.log(computerChoice);
+
+
+    //when use press key, call function for the game
+
+    document.onkeypress = function(event) {
+      var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+      if (guessesSoFar.indexOf(userGuess) < 0 && letters.indexOf(userGuess) >= 0) {
+		guessesSoFar[guessesSoFar.length] = userGuess;
+		guesses--;
+	}
+
+      if (userGuess === computerChoice) {
+        console.log("You Won!")
+        win++;
+        guess = 10;
+        guessSoFar = [];
+        computerChoice = letters[Math.floor(Math.random()*letters.length)];
+        
+      }else{
+        guess--;
+      }
+
+      if (guess = 0){
+        console.log("You Lost!")
+        losses++;
+        guess = 10;
+        guessSoFar = [];
+        computerChoice = letters[Math.floor(Math.random()*letters.length)];
+      }
+
+      document.getElementById('Win').innerHTML = "Wins: " + win;
+      document.getElementById('Losses').innerHTML = "Losses: " + losses;
+      document.getElementById('Guess').innerHTML = "Guess Left: " + guess;
+      var html = "<p>Guess what letter I'm thinking of?</p><p>Win: 0</p><p>Losses: 0</p><p>Guess: 10</p><p>Your Guesses so far: </p>";
+      document.querySelector("#game").innerHTML = html;
+    }
+  </script>
+
+</body>
+</html>
